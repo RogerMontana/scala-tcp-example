@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package messages;
+
+message AutorizationRequest {
+
+    required string username = 1;
+
+    required string pwd = 2;
+
+}
+

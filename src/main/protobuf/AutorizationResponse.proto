@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package messages;
+
+import "ERROR_CODE.proto";
+
+message AutorizationResponse {
+
+    required ERROR_CODE status = 1;
+
+    optional int32 authRequestNumber = 2;
+
+}

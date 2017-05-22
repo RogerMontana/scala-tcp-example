@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package messages;
+
+enum ERROR_CODE {
+
+    OK = 0;
+
+    ERROR = 1;
+
+}

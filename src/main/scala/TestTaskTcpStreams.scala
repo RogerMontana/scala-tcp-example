@@ -5,6 +5,9 @@ import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{BidiFlow, Flow, Sink, Source, Tcp}
 import akka.util.ByteString
 import com.typesafe.config.ConfigFactory
+import messages.AutorizationRequest.AutorizationRequest
+import messages.AutorizationResponse.AutorizationResponse
+import messages.ERROR_CODE.ERROR_CODE
 
 import scala.io.StdIn
 
@@ -13,7 +16,12 @@ object TestTaskTcpStreams extends App {
   implicit val materializer = ActorMaterializer()
 
   type Message = String
-//  type Message = MessageRequest
+//  Example of Messages
+  val aRequest:AutorizationRequest = AutorizationRequest("kek","123")
+  val aResponse:AutorizationResponse = AutorizationResponse(ERROR_CODE.OK,Option(0))
+  val aResponseFailed:AutorizationResponse = AutorizationResponse(ERROR_CODE.ERROR,Option(0))
+
+
   val (host, port) = ("localhost", 46235)
 
   val deserialize:ByteString => Message = _.utf8String
